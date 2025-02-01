@@ -88,6 +88,9 @@
             document.getElementById('tab-lab-values').addEventListener('click', function() {
                 showContent('LabValues.html', 'tab-lab-values');
             });
+            document.getElementById('tab-scatter').addEventListener('click', function() {
+                showContent('ScatterplotPctChange.html', 'tab-scatter');
+            });
             document.getElementById('tab-aes').addEventListener('click', function() {
                 showContent('AEs.html', 'tab-aes');
             });
@@ -112,6 +115,7 @@
         <div class="middle"></div>
         <div class="lower">
             <div id="tab-lab-values" class="active">Lab Values</div>
+            <div id="tab-scatter">% Change Scatterplots</div>
             <div id="tab-aes">Adverse Events</div>
             <div id="tab-exposure">Exposure</div>
 	    <div hidden>
