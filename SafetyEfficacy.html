@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Image Selector</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      margin: 20px;
+    }
+    .menu {
+      margin-right: 20px;
+    }
+    .menu label {
+      display: block;
+      margin-bottom: 10px;
+    }
+    #image-container {
+      border: 1px solid #ccc;
+      padding: 10px;
+    }
+    #image-container img {
+      <!-- max-width: 600px; -->
+      <!-- max-height: 400px; -->
+  width: 500px;  /* Set width */
+  height: auto;  /* Maintain aspect ratio */
+  max-width: 100%;  /* Ensure responsiveness */
+  max-height: 500px; /* Limit height */
+  border: 1px solid #ccc; /* Optional: Add a border */						     
+    }
+  </style>
+</head>
+<body>
+  <div class="menu">
+    <label for="dropdown1">Select Parameter for Efficacy or Safety:</label>
+    <select id="dropdown1">
+      <option value="PctChangeFirstTBA/PctChangeFirstTBA">Percent Change tumor diameter at first TBA</option>
+      <option value="waterfall/waterfall">Percent Change Tumor Diameter at Smallest</option>
+      <option value="NewLesions/NewLesions"> Number of New Lesions Before 70 Days</option>
+      <option value="PFS/PFS">PFS</option>
+      <option value="PlateletMin/PlateletMin">Lowest Platelets during Cycle 1</option>
+    </select><br><br>
+
+    <label for="dropdown2">Select Analyte (Percent Change on C1D1): </label>
+    <select id="dropdown2">
+<option value="PctChange_Adiponectin">Adiponectin</option> 
+<option value="PctChange_Albumin">Albumin</option> 
+<option value="PctChange_Alkaline_Phosphatase">Alkaline_Phosphatase</option> 
+<option value="PctChange_ALT_(SGPT)">ALT_(SGPT)</option> 
+<option value="PctChange_AST_(SGOT)">AST_(SGOT)</option> 
+<option value="PctChange_Basophils">Basophils</option> 
+<option value="PctChange_bFGF">bFGF</option> 
+<option value="PctChange_bFGF_Strat_GT_3.5">bFGF_Strat_GT_3.5</option> 
+<option value="PctChange_Bicarbonate">Bicarbonate</option> 
+<option value="PctChange_Calcium">Calcium</option> 
+<option value="PctChange_Chloride">Chloride</option> 
+<option value="PctChange_Creatine_Kinase">Creatine_Kinase</option> 
+<option value="PctChange_CRP">CRP</option> 
+<option value="PctChange_Direct_Bilirubin">Direct_Bilirubin</option> 
+<option value="PctChange_Eosinophils">Eosinophils</option> 
+<option value="PctChange_Free_Fatty_acids">Free_Fatty_acids</option> 
+<option value="PctChange_Glucose">Glucose</option> 
+<option value="PctChange_HbA1c">HbA1c</option> 
+<option value="PctChange_HDL_Cholesterol_(Direct)">HDL_Cholesterol_(Direct)</option> 
+<option value="PctChange_Hematocrit">Hematocrit</option> 
+<option value="PctChange_Hemoglobin">Hemoglobin</option> 
+<option value="PctChange_IGF_1">IGF_1</option> 
+<option value="PctChange_IL_6">IL_6</option> 
+<option value="PctChange_Indirect_Bilirubin">Indirect_Bilirubin</option> 
+<option value="PctChange_INR">INR</option> 
+<option value="PctChange_Insulin">Insulin</option> 
+<option value="PctChange_Insulin_Strat_GT_20">Insulin_Strat_GT_20</option> 
+<option value="PctChange_LDL_Cholesterol_(Direct)">LDL_Cholesterol_(Direct)</option> 
+<option value="PctChange_Leptin">Leptin</option> 
+<option value="PctChange_Lymphocytes">Lymphocytes</option> 
+<option value="PctChange_Magnesium">Magnesium</option> 
+<option value="PctChange_MCP_1">MCP_1</option> 
+<option value="PctChange_Monocytes">Monocytes</option> 
+<option value="PctChange_Neutrophils">Neutrophils</option> 
+<option value="PctChange_Phosphorous">Phosphorous</option> 
+<option value="PctChange_Platelet_Count">Platelet_Count</option> 
+<option value="PctChange_Potassium">Potassium</option> 
+<option value="PctChange_PT(prothrombin_time)">PT(prothrombin_time)</option> 
+<option value="PctChange_PTT">PTT</option> 
+<option value="PctChange_RBC_Count">RBC_Count</option> 
+<option value="PctChange_Serum_Creatinine">Serum_Creatinine</option> 
+<option value="PctChange_Sodium">Sodium</option> 
+<option value="PctChange_T3">T3</option> 
+<option value="PctChange_T4">T4</option> 
+<option value="PctChange_TNF_Alpha">TNF_Alpha</option> 
+<option value="PctChange_Total_Bilirubin">Total_Bilirubin</option> 
+<option value="PctChange_Total_Cholesterol">Total_Cholesterol</option> 
+<option value="PctChange_Total_Protein">Total_Protein</option> 
+<option value="PctChange_Triglycerides">Triglycerides</option> 
+<option value="PctChange_TSH">TSH</option> 
+<option value="PctChange_Urea_Nitrogen_(BUN)">Urea_Nitrogen_(BUN)</option> 
+<option value="PctChange_Uric_Acid">Uric_Acid</option> 
+<option value="PctChange_VEGF_A">VEGF_A</option> 
+<option value="PctChange_VEGF_C">VEGF_C</option> 
+<option value="PctChange_VEGF_D">VEGF_D</option> 
+<option value="PctChange_VLDL_(Direct)">VLDL_(Direct)</option> 
+<option value="PctChange_VSWT">VSWT</option> 
+<option value="PctChange_WBC_Count">WBC_Count</option> 
+    </select>
+  </div>
+
+  <div id="image-container">
+    <img id="display-image" src="PleaseSelectParameters.jpg" alt="Selected Graph">
+  </div>
+
+  <script>
+    // JavaScript variables for the dropdown selections
+    const dropdown1 = document.getElementById('dropdown1');
+    const dropdown2 = document.getElementById('dropdown2');
+    const displayImage = document.getElementById('display-image');
+
+    // Function to update the image based on dropdown selections
+    function updateImage() {
+      const value1 = dropdown1.value;
+    const value2 = dropdown2.value;
+      console.log('LOC 01')
+      const newImageSrc = `${value1}_v_${value2}.jpg`;
+      console.log('LOC 02: '+newImageSrc);
+      //newImageSrcWithDir = 'scatterplotpct/scatter_' + newImageSrc;
+	newImageSrcWithDir = newImageSrc;
+      console.log('LOC 03: '+newImageSrcWithDir);
+      displayImage.src = newImageSrcWithDir;
+      displayImage.alt = `Graph for ${value1} and ${value2}`;
+    }
+
+    // Add event listeners to dropdown menus
+    dropdown1.addEventListener('change', updateImage);
+    dropdown2.addEventListener('change', updateImage);
+  </script>
+</body>
+</html>
