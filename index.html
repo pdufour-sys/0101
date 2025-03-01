@@ -14,14 +14,14 @@
             background-color: #8ac300;
             display: flex;
             flex-direction: column;
-            height: 160px; /* Adjust the height as needed */
+            height: 80px; /* Adjust the height as needed */
         }
         .top-area .upper {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 10px;
-            height: 50%;
+            height: 10%;
             background-color: #8ac300;
         }
         .top-area .upper img {
@@ -35,18 +35,18 @@
         }
         .top-area .middle {
             background-color: steelblue;
-            height: 25%;
+            height: 8%;
         }
         .top-area .lower {
             display: flex;
             justify-content: space-around;
             background-color: #8ac310;
-            height: 25%;
+            height: 0%;
         }
         .top-area .lower div {
             flex-grow: 1;
             text-align: center;
-            padding: 15px;
+            padding: 20px;
             cursor: pointer;
             color: black;
         }
@@ -57,9 +57,9 @@
             background-color: #777777;
         }
         .content {
-            padding: 20px;
+            padding: 0px;
             overflow-y: auto;
-            height: calc(100vh - 200px); /* Adjust to match the height of the top area */
+            height: calc(100vh - 50px); / * Adjust to match the height of the top area */
         }
         .content iframe {
             width: 100%;
@@ -91,6 +91,9 @@
             document.getElementById('tab-scatter').addEventListener('click', function() {
                 showContent('ScatterplotPctChange.html', 'tab-scatter');
             });
+            document.getElementById('tab-safe-eff').addEventListener('click', function() {
+                showContent('SafetyEfficacy.html', 'tab-safe-eff');
+            });
             document.getElementById('tab-aes').addEventListener('click', function() {
                 showContent('AEs.html', 'tab-aes');
             });
@@ -119,6 +122,7 @@
         <div class="lower">
             <div id="tab-lab-values" class="active">Lab Values</div>
             <div id="tab-scatter">% Change Scatterplots</div>
+            <div id="tab-safe-eff">Safety and Efficacy</div>
             <div id="tab-aes">Adverse Events</div>
             <div id="tab-exposure">Exposure</div>
             <div id="tab-safety-efficacy">Safety and Efficacy</div>
