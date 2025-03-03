@@ -98,14 +98,21 @@
       let labelDropdown2 = document.getElementById('label-dropdown2');
       let labelDropdown3 = document.getElementById('label-dropdown3');
       let labelDropdown4 = document.getElementById('label-dropdown4');
+      let buttonleft = document.getElementById('buttonleft');
+      let buttonright = document.getElementById('buttonright');
+
       if (pWhich=='left') {
 	  labelDropdown2.style.fontWeight = "700"; // Make text bold
 	  labelDropdown3.style.fontWeight = "700"; // Make text bold
 	  labelDropdown4.style.fontWeight = "150"; // Make text bold
+	  buttonleft.style.fontWeight = "700"; // Make text bold
+	  buttonright.style.fontWeight = "150"; // Make text bold
       } else {
 	  labelDropdown2.style.fontWeight = "150"; // Make text bold
 	  labelDropdown3.style.fontWeight = "150"; // Make text bold
 	  labelDropdown4.style.fontWeight = "700"; // Make text bold
+	  buttonleft.style.fontWeight = "150"; // Make text bold
+	  buttonright.style.fontWeight = "700"; // Make text bold
       }
       console.log('onClickExposure LOC OCE 02'+labelDropdown4);
       console.log('onClickExposure LOC OCE 03');
