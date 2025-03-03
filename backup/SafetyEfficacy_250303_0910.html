@@ -5,38 +5,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dynamic Image Selector</title>
   <style>
-    .dropdown-container {
-	display: flex;
-	gap: 20px; /* Adds space between columns */
-	align-items: flex-start; /* Align dropdowns to the top */
-    }
-    
-    .dropdown-column {
-	flex: 1; /* Each column takes equal space */
-	display: flex;
-	flex-direction: column;
-    }
-    
-    .dropdown-column-button {
-	font-size: 24px; /* Large text */
-	color: black;
-	padding: 8px 16px; /* was 15 32 */ 
-	margin: 0px 20px; /* was 4 2*/ 
-	background-color: green;
-    }
-    
-    /* Add a thin green vertical bar */
-    .dropdown-column:nth-child(2) {
-	border-left: 2px solid green; /* Thin green vertical bar */
-	padding-left: 20px; /* Adds space so text doesn’t touch the border */
-    }
-    .or-separator {
-	font-size: 24px; /* Large text */
-	font-weight: bold;
-	text-align: center;
-	white-space: nowrap;
-    }
-    
+.dropdown-container {
+    display: flex;
+    gap: 20px; /* Adds space between columns */
+    align-items: flex-start; /* Align dropdowns to the top */
+}
+
+.dropdown-column {
+    flex: 1; /* Each column takes equal space */
+    display: flex;
+    flex-direction: column;
+}
+
+.dropdown-column-button {
+font-size: 30px; /* Large text */
+color: black;
+      background-color: green;
+
+}
+
+/* Add a thin green vertical bar */
+.dropdown-column:nth-child(2) {
+    border-left: 2px solid green; /* Thin green vertical bar */
+    padding-left: 20px; /* Adds space so text doesn’t touch the border */
+}
+.or-separator {
+    font-size: 24px; /* Large text */
+    font-weight: bold;
+    text-align: center;
+    white-space: nowrap;
+}
+
     body {
       background-color: skyblue;
       font-family: Arial, sans-serif;
@@ -74,42 +73,11 @@
 </head>
 <body>
 <script>
-  // the default chosen for "predictor characteristics" is pct
-  let theside = 'left'
-  let variation1 = 'PctC2D1/'
-  let variation2 = 'PctChange'
+    // the default chosen for "predictor characteristics" is pct
+    let theside = 'left'
+    let variation1 = 'PctC2D1/'
+    let variation2 = 'PctChange'
 
-  function onClickExposure() {
-      console.log('onClickExposure LOC OCE 01');
-      //weightLightBold('right');
-      setPredictorSide('right')
-      updateImage();    
-  }
-
-  function onClickEdcLabs() {
-      console.log('onClickEdcLabs')
-      setPredictorSide('left')
-      updateImage();    
-  }
-
-  // pWhich is either 'left' or 'right'
-  function weightLightBold(pWhich) {
-      let labelDropdown2 = document.getElementById('label-dropdown2');
-      let labelDropdown3 = document.getElementById('label-dropdown3');
-      let labelDropdown4 = document.getElementById('label-dropdown4');
-      if (pWhich=='left') {
-	  labelDropdown2.style.fontWeight = "700"; // Make text bold
-	  labelDropdown3.style.fontWeight = "700"; // Make text bold
-	  labelDropdown4.style.fontWeight = "150"; // Make text bold
-      } else {
-	  labelDropdown2.style.fontWeight = "150"; // Make text bold
-	  labelDropdown3.style.fontWeight = "150"; // Make text bold
-	  labelDropdown4.style.fontWeight = "700"; // Make text bold
-      }
-      console.log('onClickExposure LOC OCE 02'+labelDropdown4);
-      console.log('onClickExposure LOC OCE 03');
-  }
-    
     function setVariationFromDropdown () {
 	let dropdown3Value = document.getElementById('dropdown3').value;
 	console.log('svfd() LOC 01 with '+dropdown3Value);
@@ -146,7 +114,6 @@
   // theside can be either left or right
   function setPredictorSide(p_theside) {
       console.log("********** setPredictorSide("+p_theside+")")
-      weightLightBold(p_theside);
       theside = p_theside;
   }
   function setVariationFromDropdownAndSetLeft () {
@@ -178,10 +145,9 @@
   <div class="menu">
     <div class="lhs-highlight-expression">Efficacy/Safety Parameter To Predict<br><b>y</b>=f(x)</div><br><br>
 
-    <label for="dropdown1" id="label-dropdown1">Select Efficiency/Safety Parameter to Predict </label>
+    <label for="dropdown1">Select Efficiency/Safety Parameter to Predict </label>
     <select id="dropdown1" onchange='setVariationFromDropdown()'>
-      <!-- removing "first tba, since the tumor never later shrinks -->
-      <!-- option value="PctChangeFirstTBA">Efficacy: Percent Change tumor diameter at first TBA < option > -->
+      <option value="PctChangeFirstTBA">Efficacy: Percent Change tumor diameter at first TBA</option>
       <option value="Waterfall">Efficacy: Lowest Percent Change Tumor Diameter (Waterfall Plot)</option>
       <option value="NewLesions">Efficacy: Number of New Lesions </option>
       <option value="pfs">Efficacy: Swimmer's Plot Duration</option>
@@ -193,8 +159,8 @@
     <div class="dropdown-container">
       <!-- Left Column -->
       <div class="dropdown-column">
-        <button id="buttonleft" class="dropdown-column-button" type="button" onclick="onClickEdcLabs()">EDC / Labs</button><br><br>
-        <label for="dropdown2" id="label-dropdown2">Potential Predictor from EDC/Labs</label>
+        <button class="dropdown-column-button" type="button">Click Me 1!</button><br><br>
+        <label for="dropdown2">Potential Predictor from EDC/Labs</label>
         <select id="dropdown2" onchange="setPredictorSide('left')">
 	  <option value="Adiponectin">Adiponectin</option> 
 	  <option value="Albumin">Albumin</option> 
@@ -256,7 +222,7 @@
 	  <option value="WBC_Count">WBC Count</option> 
         </select><br><br>
 	
-        <label for="dropdown3" id="label-dropdown3">Select Predictor Characteristics:</label>
+        <label for="dropdown3">Select Predictor Characteristics:</label>
         <select id="dropdown3" onchange='setVariationFromDropdownAndSetLeft()'>
           <option value="pct">Percent Change from C1D1 to C2D1</option>
           <option value="max">Highest Value Ever</option>
@@ -271,8 +237,8 @@
 
       <!-- Right Column -->
       <div class="dropdown-column">
-        <button id="buttonright" class="dropdown-column-button" type="button"onclick="onClickExposure()">Exposure</button><br><br>
-        <label for="dropdown4" id="label-dropdown4">Potential Predictor from Exposure</label>
+        <button class="dropdown-column-button" type="button">Click Me 2!</button><br><br>
+        <label for="dropdown4">Potential Predictor from Exposure</label>
         <select id="dropdown4" onchange="setPredictorSide('right')">
           <option value="cmax7539">CMax 7539 (Cycle 1)</option>
           <option value="cmax9729">CMax 9729 (Cycle 1)</option>
@@ -307,20 +273,20 @@
 	const solution1 = `safetyefficacy/${w1}${w2}_v_${w2}.jpg`;
 	solution2 = `safetyefficacy/${variation1}${value1}_v_${variation2}_${value2}.jpg`;
 
-	//console.log('LOC 00.0.1 value1 = '+value1);
-	//console.log('LOC 00.0.2 value2 = '+value2);
-	//console.log('LOC 00.0.3 variation1 = '+variation1);
-	//console.log('LOC 00.0.4 variation2 = '+variation2);
-	//console.log('LOC 00.0.5 value1 = '+value1);
-	//console.log('LOC 00.0.6 value2 = '+value2);
-	//console.log('LOC 00.0.7 value3 = '+value3);
-	//console.log('LOC 00.0.8 value4 = '+value4);
-	//console.log('LOC 00.0.9 theside = '+theside);
+	console.log('LOC 00.0.1 value1 = '+value1);
+	console.log('LOC 00.0.2 value2 = '+value2);
+	console.log('LOC 00.0.3 variation1 = '+variation1);
+	console.log('LOC 00.0.4 variation2 = '+variation2);
+	console.log('LOC 00.0.5 value1 = '+value1);
+	console.log('LOC 00.0.6 value2 = '+value2);
+	console.log('LOC 00.0.7 value3 = '+value3);
+	console.log('LOC 00.0.8 value4 = '+value4);
+	console.log('LOC 00.0.9 theside = '+theside);
 
-	//console.log('LOC 00.1.1 w1 = '+w1);
-	//console.log('LOC 00.1.2 w2 = '+w2);
-	//console.log('LOC 00.1.3 w3 = '+w3);
-	//console.log('LOC 00.1.4 solution1 = '+solution1);
+	console.log('LOC 00.1.1 w1 = '+w1);
+	console.log('LOC 00.1.2 w2 = '+w2);
+	console.log('LOC 00.1.3 w3 = '+w3);
+	console.log('LOC 00.1.4 solution1 = '+solution1);
 	console.log('LOC 00.1.4 solution2 = '+solution2);
 
         if ('right' == theside) {
@@ -349,11 +315,8 @@
     dropdown2.addEventListener('change', updateImage);
     dropdown3.addEventListener('change', updateImage);
     dropdown4.addEventListener('change', updateImage);
-    buttonleft.addEventListener('change', updateImage);
-    buttonright.addEventListener('change', updateImage);
 
     updateImage();    
-    setPredictorSide('left')
   </script>
 </body>
 </html>

@@ -18,7 +18,7 @@
     }
     
     .dropdown-column-button {
-	font-size: 24px; /* Large text */
+	font-size: 30px; /* Large text */
 	color: black;
 	padding: 8px 16px; /* was 15 32 */ 
 	margin: 0px 20px; /* was 4 2*/ 
@@ -180,8 +180,7 @@
 
     <label for="dropdown1" id="label-dropdown1">Select Efficiency/Safety Parameter to Predict </label>
     <select id="dropdown1" onchange='setVariationFromDropdown()'>
-      <!-- removing "first tba, since the tumor never later shrinks -->
-      <!-- option value="PctChangeFirstTBA">Efficacy: Percent Change tumor diameter at first TBA < option > -->
+      <option value="PctChangeFirstTBA">Efficacy: Percent Change tumor diameter at first TBA</option>
       <option value="Waterfall">Efficacy: Lowest Percent Change Tumor Diameter (Waterfall Plot)</option>
       <option value="NewLesions">Efficacy: Number of New Lesions </option>
       <option value="pfs">Efficacy: Swimmer's Plot Duration</option>

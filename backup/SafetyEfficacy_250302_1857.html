@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Image Selector</title>
+  <style>
+    body {
+      background-color: skyblue;
+      font-family: Arial, sans-serif;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      margin: 20px;
+    }
+    .lhs-highlight-expression {
+	font-family: Arial, sans-serif;
+	font-size: 25px;
+	
+    }
+    .menu {
+      margin-right: 20px;
+    }
+    .menu label {
+      display: block;
+      margin-bottom: 10px;
+    }
+    #image-container {
+      border: 1px solid #ccc;
+      padding: 10px;
+    }
+    #image-container img {
+      <!-- max-width: 600px; -->
+      <!-- max-height: 400px; -->
+  width: 600px;  /* Set width */
+  height: auto;  /* Maintain aspect ratio */
+  max-width: 100%;  /* Ensure responsiveness */
+  max-height: 600px; /* Limit height */
+  border: 1px solid #ccc; /* Optional: Add a border */						     
+    }
+  </style>
+</head>
+<body>
+<script>
+    // the default chosen for "predictor characteristics" is pct
+    let variation1 = 'PctC2D1/'
+    let variation2 = 'PctChange'
+
+    function setVariationFromDropdown () {
+	let dropdown3Value = document.getElementById('dropdown3').value;
+	console.log('svfd() LOC 01 with '+dropdown3Value);
+        
+	if (dropdown3Value=='pct') {
+	    console.log('svfd() LOC 02')
+	    variation1 = 'PctC2D1/';
+	    variation2 = 'PctChange';
+	} else if (dropdown3Value=='max') {
+	    console.log('svfd() LOC 03')
+	    variation1 = 'MaxEver/';
+	    variation2 = 'MaxValueEver';
+	} else if (dropdown3Value=='min') {
+	    console.log('svfd() LOC 04')
+	    variation1 = 'MinEver/';
+	    variation2 = 'MinValueEver';
+	} else if (dropdown3Value=='c1d1') {
+	    console.log('svfd() LOC 05')
+	    variation1 = 'C1D1/';
+	    variation2 = 'C1D1';
+	} else if (dropdown3Value=='c2d1') {
+	    console.log('svfd() LOC 07')
+	    variation1 = 'C2D1/';
+	    variation2 = 'C2D1';
+	} else {
+	    console.log('svfd() LOC 07')
+	    variation1 = 'SET21';
+	    variation2 = 'SET22';
+	}
+	console.log('svfd() LOC 08')
+    }
+
+    function setVariation(newvar) {
+	if (newvar=='pct') {
+	    variation1 = 'PctC2D1/';
+	    variation2 = 'PctChange';
+	} else if (newvar=='max') {
+	    variation1 = 'MaxEver/';
+	    variation2 = 'MaxValueEver';
+	} else if (newvar=='min') {
+	    variation1 = 'MinEver/';
+	    variation2 = 'MinValueEver';
+	} else {
+	    variation1 = 'SET21';
+	    variation2 = 'SET22';
+	}
+	console.log('setVaraation with '+newvar);
+        variation = newvar;
+	console.log('now its '+variation);
+    }
+
+</script>
+
+  <div class="menu">
+    <div class="lhs-highlight-expression">Efficacy/Safety Parameter To Predict<br><b>y</b>=f(x)</div><br><br>
+    <label for="dropdown1">Select Efficiency/Safety Parameter to Predict </label>
+    <select id="dropdown1" onchange='setVariationFromDropdown()'>
+      <option value="PctChangeFirstTBA">Efficacy: Percent Change tumor diameter at first TBA</option>
+      <option value="Waterfall">Efficacy: Lowest Percent Change Tumor Diameter (Waterfall Plot)</option>
+      <option value="NewLesions">Efficacy: Number of New Lesions </option>
+      <option value="pfs">Efficacy: Swimmer's Plot Duration</option>
+      <option value="PlateletMin">Safety: Lowest Platelets during Cycle 1</option>
+    </select><br><br><br><br><br><br><br><br>
+    <div class="lhs-highlight-expression">Potential Predictor <br>y=f(<b>x</b>)</div><br><br>
+    <label for="dropdown2">Select Potential Predictor</label>
+    <select id="dropdown2">
+<option value="Adiponectin">Adiponectin</option> 
+<option value="Albumin">Albumin</option> 
+<option value="Alkaline_Phosphatase">Alkaline_Phosphatase</option> 
+<option value="ALT_(SGPT)">ALT (SGPT)</option> 
+<option value="AST_(SGOT)">AST (SGOT)</option> 
+<option value="Basophils">Basophils</option> 
+<option value="bFGF">bFGF</option> 
+<option value="bFGF_Strat_GT_3.5">bFGF (Stratified >= 3.5 pm/ml)</option> 
+<option value="Bicarbonate">Bicarbonate</option> 
+<option value="Calcium">Calcium</option> 
+<option value="Chloride">Chloride</option> 
+<option value="Creatine_Kinase">Creatine Kinase</option> 
+<option value="CRP">CRP</option> 
+<option value="Direct_Bilirubin">Direct Bilirubin</option> 
+<option value="Eosinophils">Eosinophils</option> 
+<option value="Free_Fatty_acids">Free Fatty Acids</option> 
+<option value="Glucose">Glucose</option> 
+<option value="HbA1c">HbA1c</option> 
+<option value="HDL_Cholesterol_(Direct)">HDL Cholesterol (Direct)</option> 
+<option value="Hematocrit">Hematocrit</option> 
+<option value="Hemoglobin">Hemoglobin</option> 
+<option value="IGF_1">IGF-1</option> 
+<option value="IL_6">IL-6</option> 
+<option value="Indirect_Bilirubin">Indirect Bilirubin</option> 
+<option value="INR">INR</option> 
+<option value="Insulin">Insulin</option> 
+<option value="Insulin_Strat_GT_20">Insulin (Stratified >= 20 uU/mL)</option>
+<option value="LDL_Cholesterol_(Direct)">LDL Cholesterol (Direct)</option> 
+<option value="Leptin">Leptin</option> 
+<option value="Lymphocytes">Lymphocytes</option> 
+<option value="Magnesium">Magnesium</option> 
+<option value="MCP_1">MCP-1</option> 
+<option value="Monocytes">Monocytes</option> 
+<option value="Neutrophils">Neutrophils</option> 
+<option value="Phosphorous">Phosphorous</option> 
+<option value="Platelet_Count">Platelet Count</option> 
+<option value="Potassium">Potassium</option> 
+<option value="PT(prothrombin_time)">PT(Prothrombin Time)</option> 
+<option value="PTT">PTT</option> 
+<option value="RBC_Count">RBC Count</option> 
+<option value="Serum_Creatinine">Serum Creatinine</option> 
+<option value="Sodium">Sodium</option> 
+<option value="T3">T3</option> 
+<option value="T4">T4</option> 
+<option value="TNF_Alpha">TNF-Alpha</option> 
+<option value="Total_Bilirubin">Total Bilirubin</option> 
+<option value="Total_Cholesterol">Total Cholesterol</option> 
+<option value="Total_Protein">Total Protein</option> 
+<option value="Triglycerides">Triglycerides</option> 
+<option value="TSH">TSH</option> 
+<option value="Urea_Nitrogen_(BUN)">Urea Nitrogen (BUN)</option> 
+<option value="Uric_Acid">Uric Acid</option> 
+<option value="VEGF_A">VEGF-A</option> 
+<option value="VEGF_C">VEGF-C</option> 
+<option value="VEGF_D">VEGF-D</option> 
+<option value="VLDL_(Direct)">VLDL (Direct)</option> 
+<option value="VSWT">Weight</option> 
+<option value="WBC_Count">WBC Count</option> 
+    </select><br><br>
+    <label for="dropdown3">Select Predictor Characteristics:</label>
+
+    <select id="dropdown3" onchange='setVariationFromDropdown()'>
+      <option value="pct">Percent Change from C1D1 to C2D1</option>
+      <option value="max">Highest Value Ever</option>
+      <option value="min">Lowest Value Ever</option>
+      <option value="c1d1">Value at C1D1</option>
+      <option value="c2d1">Value at C2D1</option>
+    </select>
+
+
+
+  </div>
+
+  <div id="image-container">
+    <img id="display-image" src="PleaseSelectParameters.jpg" alt="Selected Graph">
+  </div>
+
+  <script>
+    // JavaScript variables for the dropdown selections
+    const dropdown1 = document.getElementById('dropdown1');
+    const dropdown2 = document.getElementById('dropdown2');
+    const dropdown3 = document.getElementById('dropdown3');
+    const displayImage = document.getElementById('display-image');
+
+    // Function to update the image based on dropdown selections
+    function updateImage() {
+        const value1 = dropdown1.value;
+        const value2 = dropdown2.value;
+        const value3 = dropdown3.value;
+
+	const w1 = variation1;
+	const w2 = variation1;
+	const w3 = value1;
+	const w4 = value2
+	const solution1 = `safetyefficacy/${w1}${w2}_v_${w2}.jpg`;
+	const solution2 = `safetyefficacy/${variation1}${value1}_v_${variation2}_${value2}.jpg`;
+
+	console.log('LOC 00.0.1 value1 = '+value1);
+	console.log('LOC 00.0.2 value2 = '+value2);
+	console.log('LOC 00.0.3 variation1 = '+variation1);
+	console.log('LOC 00.0.4 variation2 = '+variation2);
+	console.log('LOC 00.0.5 value1 = '+value1);
+	console.log('LOC 00.0.6 value2 = '+value2);
+
+	console.log('LOC 00.1.1 w1 = '+w1);
+	console.log('LOC 00.1.2 w2 = '+w2);
+	console.log('LOC 00.1.3 w3 = '+w3);
+	console.log('LOC 00.1.4 solution1 = '+solution1);
+	console.log('LOC 00.1.4 solution2 = '+solution2);
+
+	//console.log('LOC 01');
+	//onst newImageSrc = `safetyefficacy/${variation1}${value1}_v__${variation2}__${value2}.jpg`;
+	//const newImageSrc2 = `safetyefficacy/${variation1}${value1}_v_${variation2}__${value2}.jpg`;
+	//const newImageSrc3 = `safetyefficacy/${variation1}${value1}_v_${value2}.jpg`;
+	//console.log('LOC 02.1: '+newImageSrc);
+	//console.log('LOC 02.2: '+newImageSrc2);
+	//console.log('LOC 02.3: '+newImageSrc3);
+	
+	//newImageSrcWithDir = newImageSrc3
+	//console.log('LOC 03: '+newImageSrcWithDir);
+	console.log('LOC 03: '+solution2);
+	displayImage.src = solution2;
+	displayImage.alt = `Graph for ${solution2}`;
+    }
+
+    // Add event listeners to dropdown menus
+    dropdown1.addEventListener('change', updateImage);
+    dropdown2.addEventListener('change', updateImage);
+    dropdown3.addEventListener('change', updateImage);
+
+    updateImage();    
+  </script>
+</body>
+</html>
