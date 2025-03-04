@@ -77,8 +77,14 @@
 <script>
   // the default chosen for "predictor characteristics" is pct
   let theside = 'left'
+  let ewchecked = false;
   let variation1 = 'PctC2D1/'
   let variation2 = 'PctChange'
+
+  function checkboxchange() {
+      let id1 = document.getElementById('idisew');
+      ewchecked = id1.checked;
+  }
 
   function onClickExposure() {
       console.log('onClickExposure LOC OCE 01');
@@ -194,7 +200,8 @@
       <option value="NewLesions">Efficacy: Number of New Lesions </option>
       <option value="pfs">Efficacy: Swimmer's Plot Duration</option>
       <option value="PlateletMin">Safety: Lowest Platelets during Cycle 1</option>
-    </select><br><br><br><br><br><br><br><br>
+    </select><br><br>
+     Use Only Waterfall Extreme Cases? <input type='checkbox' id='idisew' name='isew' onchange='checkboxchange()'></input><br><br><br><br>
 
     <div class="lhs-highlight-expression">Potential Predictor <br>y=f(<b>x</b>)</div><br><br><br>
 
@@ -312,8 +319,13 @@
 	const w2 = variation1;
 	const w3 = value1;
 	const w4 = value2
+	let w5 = 'noew_';
+	if (ewchecked) {
+	    w5 = 'ew_';
+	}
+
 	const solution1 = `safetyefficacy/${w1}${w2}_v_${w2}.jpg`;
-	solution2 = `safetyefficacy/${variation1}${value1}_v_${variation2}_${value2}.jpg`;
+	solution2 = `safetyefficacy/${variation1}${w5}${value1}_v_${variation2}_${value2}.jpg`;
 
 	//console.log('LOC 00.0.1 value1 = '+value1);
 	//console.log('LOC 00.0.2 value2 = '+value2);
@@ -359,6 +371,7 @@
     dropdown4.addEventListener('change', updateImage);
     buttonleft.addEventListener('change', updateImage);
     buttonright.addEventListener('change', updateImage);
+    idisew.addEventListener('change', updateImage);
 
     updateImage();    
     setPredictorSide('left')
