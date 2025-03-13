@@ -200,6 +200,10 @@
       <option value="NewLesions">Efficacy: Number of New Lesions </option>
       <option value="pfs">Efficacy: Swimmer's Plot Duration</option>
       <option value="PlateletMin">Safety: Lowest Platelets during Cycle 1</option>
+      <option value="cmax7320">SDX 7320 Cmax (Cycle 1)</option>
+      <option value="cmax7539">SDX 7539 Cmax (Cycle 1)</option>
+      <option value="cmax9729">SDX 9729 Cmax (Cycle 1)</option>
+      <option value="cmax9731">SDX 9731 Cmax (Cycle 1)</option>
     </select><br><br>
      Use Only Waterfall Extreme Cases? <input type='checkbox' id='idisew' name='isew' onchange='checkboxchange()'></input><br><br><br><br>
 
@@ -290,6 +294,7 @@
         <button id="buttonright" class="dropdown-column-button" type="button"onclick="onClickExposure()">Exposure</button><br><br>
         <label for="dropdown4" id="label-dropdown4">Potential Predictor from Exposure</label>
         <select id="dropdown4" onchange="setPredictorSide('right')">
+          <option value="cmax7320">CMax 7320 (Cycle 1)</option>
           <option value="cmax7539">CMax 7539 (Cycle 1)</option>
           <option value="cmax9729">CMax 9729 (Cycle 1)</option>
           <option value="cmax9731">CMax 9731 (Cycle 1)</option>
